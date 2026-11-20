@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="岐阜の保険代理店ひかりパートナーズが作った、Webサイト・管理システム・アプリ・ゲームの制作実績です。">
+<link rel="icon" href="logo.png">
+<title>ひかりパートナーズ 制作実績</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+/* Layout: 乾いたオリーブカーキの地に、幾何学模様を薄く散らす。象牙色のパネルではっきり区切り、詰めた組版で1画面の情報量を増やす */
+:root{
+  --bg1:#3fb8ab; --bg2:#4fc1b5; --bg3:#0e7d70; --tile:#0b5e56;
+  --ivory:#ffffff; --card:#ffffff; --ink:#0d2b29; --ink2:#355754; --muted:#6c8784; --hair:#d4ece8;
+  --on:#ffffff; --on2:#f1fbf9;
+  --khaki:#0f8a7c; --olive:#0b6b60; --brass:#c9a24a; --gold:#ffe39a; --rust:#c9a24a; --teal:#0f8a7c; --sky:#81d8d0;
+  --grad:linear-gradient(110deg,#81d8d0 0%,#2cb5a3 30%,#0b8a77 52%,#c9a24a 78%,#f3d98b 100%);
+  --grad-soft:linear-gradient(110deg,rgba(129,216,208,.22),rgba(15,138,124,.12),rgba(201,162,74,.16));
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --head:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(900px 520px at 85% -5%,rgba(255,227,154,.45),transparent 60%),radial-gradient(700px 420px at 55% 0%,rgba(129,216,208,.55),transparent 65%),linear-gradient(160deg,var(--bg1) 0%,#2aa898 25%,#36b3a5 50%,#16917f 75%,var(--bg3) 100%) fixed;color:var(--on);font-family:var(--body);font-size:14px;line-height:1.5;font-feature-settings:"palt";overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg2)}
+.geo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.geo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);mask-image:linear-gradient(180deg,#000 0%,transparent 70%)}
+.geo svg{position:absolute;inset:0;width:100%;height:100%}
+.geo .spin{transform-box:fill-box;transform-origin:center;animation:spin 60s linear infinite}
+.geo .bob{animation:bob 9s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{to{transform:translateY(18px)}}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(11,94,86,.62);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2)}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grad)}
+.hin{display:flex;align-items:center;gap:12px;min-height:50px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo img{height:32px;width:auto;border-radius:6px}
+.logo span{font-family:var(--display);font-weight:900;font-size:1.25rem;letter-spacing:.03em;line-height:1}
+.logo b{color:var(--gold);margin-left:3px}
+.tabs{display:flex;margin-left:auto}
+.tabs a{position:relative;color:var(--on2);padding:6px 10px;font-family:var(--head);font-weight:700;font-size:.85rem;text-decoration:none}
+.tabs a::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .2s}
+.tabs a:hover{color:var(--on)}.tabs a:hover::after{transform:scaleX(1)}
+
+.hero{padding-block:22px 16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:14px 28px;align-items:end}
+.hero{position:relative}
+.hero::before{content:"";position:absolute;left:-40px;top:-10px;width:min(620px,90%);height:240px;background:radial-gradient(closest-side,rgba(8,80,72,.22),transparent);pointer-events:none;z-index:-1}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:4px 14px 4px 10px;border-radius:999px;font-family:var(--display);font-weight:900;font-size:.9rem;letter-spacing:.12em;color:#0b3833;background:linear-gradient(180deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,0) 52%),linear-gradient(100deg,#ffffff,#ffe39a 50%,#e3b85a);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 16px -6px rgba(8,80,72,.5)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.35),0 0 10px #fff;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(255,255,255,0),0 0 16px #fff}}
+.jtitle{font-family:var(--head);font-weight:900;font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.16;letter-spacing:-.01em;margin-top:10px;background:linear-gradient(180deg,#ffffff 0%,#ffffff 50%,#dff6f2 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(8,80,72,.35)) drop-shadow(0 8px 20px rgba(8,80,72,.3))}
+.jtitle span{position:relative;display:inline-block;background:linear-gradient(100deg,#fff6d2 0%,#ffe39a 25%,#e3b85a 50%,#ffe39a 75%,#fff6d2 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 6s linear infinite;filter:drop-shadow(0 0 14px rgba(255,214,120,.65))}
+@keyframes flow{to{background-position:220% 0}}
+.bio{color:var(--on);max-width:44em;margin-top:10px;font-size:.88rem;line-height:1.55;text-shadow:0 1px 2px rgba(8,80,72,.45)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.stats button{position:relative;overflow:hidden;display:flex;align-items:baseline;gap:8px;text-align:left;border-radius:14px;padding:10px 12px;cursor:pointer;border:1.5px solid transparent;
+  background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 52%) padding-box,linear-gradient(160deg,#0f9a88 0%,#0a5d55 100%) padding-box,linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,210,122,.8) 45%,rgba(129,216,208,.9)) border-box;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 10px 22px -12px rgba(8,80,72,.6);transition:transform .18s,box-shadow .18s}
+.stats button::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sheen 4.5s ease-in-out infinite}
+.stats button:nth-child(2)::after{animation-delay:.6s}.stats button:nth-child(3)::after{animation-delay:1.2s}.stats button:nth-child(4)::after{animation-delay:1.8s}
+@keyframes sheen{0%,60%{left:-60%}100%{left:130%}}
+.stats button:hover{transform:translateY(-3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 16px 28px -12px rgba(201,162,74,.7)}
+.stats b{display:block;font-family:var(--display);font-size:2.2rem;line-height:1;background:linear-gradient(180deg,#fffbe6 0%,#ffe39a 50%,#d9ac4c 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(90,70,20,.35));font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--head);font-weight:900;font-size:.76rem;color:var(--on);line-height:1.3;white-space:nowrap;text-shadow:0 1px 2px rgba(8,80,72,.45)}
+
+.panel{position:relative;background:var(--ivory);border-radius:18px;padding:16px 18px;margin-bottom:12px;color:var(--ink);box-shadow:0 18px 40px -24px rgba(6,70,64,.6),0 0 0 1px rgba(255,255,255,.6) inset;overflow:hidden}
+.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad)}
+.panel::after{content:"";position:absolute;right:14px;top:12px;width:40px;height:48px;background:url(logo.png) center/contain no-repeat;opacity:.14;pointer-events:none}
+h2{font-family:var(--head);font-weight:900;font-size:1.02rem;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;color:var(--ink);letter-spacing:-.01em}
+h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spacing:.03em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.note{color:var(--ink2);font-size:.78rem;line-height:1.5;margin-top:3px;max-width:60em}
+
+.can{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
+.can div{border-radius:10px;padding:8px 12px;background:var(--grad-soft),var(--card);border:1px solid var(--hair);min-width:0}
+.can b{display:block;font-family:var(--head);font-weight:900;font-size:.88rem;color:var(--ink);line-height:1.35}
+.can span{display:block;font-size:.76rem;color:var(--ink2);line-height:1.45;margin-top:1px}
+
+.bar{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.pill{border:1px solid var(--hair);background:var(--card);color:var(--ink);border-radius:999px;padding:3px 12px;font-family:var(--head);font-weight:900;font-size:.8rem;cursor:pointer;min-height:32px;transition:border-color .15s}
+.pill i{font-style:normal;font-family:var(--display);font-size:1rem;margin-left:5px;color:var(--khaki)}
+.pill:hover{border-color:var(--khaki)}
+.pill[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:#fff;text-shadow:0 1px 2px rgba(8,80,72,.5)}
+.pill[aria-pressed="true"] i{color:#fff}
+.grid{display:grid;gap:8px;margin-top:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,255px),1fr))}
+.work{position:relative;display:flex;flex-direction:column;gap:3px;background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:10px 12px 10px 14px;min-width:0;overflow:hidden;transition:transform .16s,box-shadow .16s}
+.work::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.work.on:hover{transform:translateY(-3px);box-shadow:0 12px 24px -16px rgba(11,107,96,.6)}
+.work.off{background:#f6fbfa}
+.work.off::before{background:var(--hair)}
+.top-row{display:flex;align-items:center;gap:6px}
+.kind{font-family:var(--head);font-weight:900;font-size:.66rem;padding:1px 8px;border-radius:999px;background:var(--grad-soft);color:var(--olive)}
+.name{font-family:var(--head);font-weight:900;font-size:.95rem;line-height:1.3;overflow-wrap:anywhere;color:var(--ink);letter-spacing:-.01em}
+.work p{font-size:.76rem;color:var(--ink2);line-height:1.45}
+.links{margin-top:auto;padding-top:5px}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:4px 14px;min-height:32px;border-radius:999px;font-family:var(--head);font-weight:900;font-size:.78rem;text-decoration:none;color:#0b3833;background:linear-gradient(110deg,#a6e6df 0%,#81d8d0 30%,#f3d98b 70%,#a6e6df 100%);background-size:200% 100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 6px 14px -8px rgba(11,107,96,.7);transition:background-position .35s,transform .12s}
+.btn:hover{background-position:100% 0}
+.btn:active{transform:translateY(1px)}
+.only{display:inline-flex;align-items:center;min-height:26px;font-family:var(--head);font-weight:700;font-size:.7rem;color:var(--muted);border:1px dashed #b9dcd7;border-radius:999px;padding:0 10px}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.step{border-radius:10px;padding:8px 12px;background:var(--card);border:1px solid var(--hair);min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px;align-items:center}
+.step b{grid-row:span 2;font-family:var(--display);font-size:1.6rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-family:var(--head);font-weight:900;font-size:.88rem;color:var(--ink);line-height:1.3}
+.step p{font-size:.74rem;color:var(--ink2);line-height:1.4}
+footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.75rem;color:var(--on2)}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.can{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs{display:none}}
+@media (max-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stats button{display:block}}
+@media (max-width:480px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.can{grid-template-columns:minmax(0,1fr)}.panel{padding:14px 12px}.stats b{font-size:1.6rem}.grid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.geo .spin,.geo .bob,.jtitle span,.stats button::after,.eyebrow::before{animation:none}.work,.btn,.stats button{transition:none}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="geo" aria-hidden="true"><svg viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#fff6d2"/><stop offset="1" stop-color="#e3b85a"/></linearGradient>
+  <pattern id="dia" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v14" stroke="#ffffff" stroke-opacity=".35" stroke-width="2"/></pattern></defs>
+  <circle cx="1250" cy="110" r="170" stroke="url(#gg)" stroke-opacity=".8" stroke-width="2.5"/>
+  <circle cx="1250" cy="110" r="112" fill="#ffffff" fill-opacity=".14"/>
+  <circle cx="1250" cy="110" r="230" stroke="#ffffff" stroke-opacity=".25" stroke-dasharray="2 9" stroke-width="2"/>
+  <g class="spin"><path d="M1060 380 l78 -135 l78 135 z" stroke="#ffe39a" stroke-opacity=".8" stroke-width="2.5"/></g>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" fill="url(#dia)"/>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" stroke="#ffffff" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M-40 230 a180 180 0 0 1 360 0 z" fill="#81d8d0" fill-opacity=".25"/>
+  <path d="M-40 230 a120 120 0 0 1 240 0" stroke="#ffffff" stroke-opacity=".5" stroke-width="2"/>
+  <g class="bob"><circle cx="370" cy="130" r="14" fill="url(#gg)"/><circle cx="1340" cy="560" r="10" fill="#ffffff" fill-opacity=".9"/><circle cx="640" cy="890" r="12" fill="#ffe39a"/><rect x="930" y="600" width="18" height="18" transform="rotate(45 939 609)" fill="#ffffff" fill-opacity=".8"/></g>
+  <g stroke="#ffffff" stroke-opacity=".28" stroke-width="2"><path d="M1170 770 l230 -230"/><path d="M1200 800 l230 -230"/><path d="M1230 830 l230 -230"/><path d="M1260 860 l230 -230"/></g>
+  <path d="M520 40 l44 0 l0 44" stroke="#ffe39a" stroke-opacity=".85" stroke-width="2.5"/>
+  <path d="M880 960 q60 -80 120 0 t120 0 t120 0" stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5"/>
+  <g class="spin"><path d="M300 860 l20 -35 l40 0 l20 35 l-20 35 l-40 0 z" stroke="#ffe39a" stroke-opacity=".8" stroke-width="2"/></g>
+  <g stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5"><path d="M760 120 l16 0 M768 112 l0 16"/><path d="M180 380 l14 0 M187 373 l0 14"/><path d="M1380 360 l14 0 M1387 353 l0 14"/></g>
+  <circle cx="820" cy="430" r="240" stroke="#ffffff" stroke-opacity=".14" stroke-width="1.5" stroke-dasharray="4 10"/>
+  <path d="M1000 690 l120 0 l-60 -104 z" fill="#0b5e56" fill-opacity=".18"/>
+  <circle cx="460" cy="620" r="70" fill="#ffe39a" fill-opacity=".12" stroke="#ffe39a" stroke-opacity=".4" stroke-width="1.5"/>
+</svg></div>
+<header><div class="wrap hin">
+  <a class="logo" href="#top"><img src="logo.png" alt=""><span>HIKARI<b>PARTNERS</b></span></a>
+  <nav class="tabs" aria-label="メインメニュー"><a href="#can">作れるもの</a><a href="#works">制作実績</a><a href="#how">作り方</a></nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">HIKARI PARTNERS　制作実績</p>
+      <h1 class="jtitle">ゲームも、<br>お店のサイトも、<br><span>仕事のアプリも。</span></h1>
+      <p class="bio">岐阜で保険代理店を営みながら、Webサイト・管理システム・アプリ・ゲームを作っています。プログラミング未経験から始めて、ドッジボールの現場や地域のお店で実際に必要なものを形にしてきました。今は1日1サイト作成を目標に日々制作に勤しんでいます！</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <section class="panel" id="can">
+    <h2><em>WHAT I MAKE</em>作れるもの</h2>
+    <div class="can">
+      <div><b>お店・団体のホームページ</b><span>接骨院、美容院、サロン、競技団体。検索やGoogleマップで見つかりやすく作ります。</span></div>
+      <div><b>予約と空き状況の管理</b><span>空き枠がひと目で分かる予約画面と、PCとスマホで使える管理画面を作ります。</span></div>
+      <div><b>チーム・社内の連絡アプリ</b><span>予定、出欠、連絡をまとめ、チームカラーやロゴに合わせて仕立てます。</span></div>
+      <div><b>大会の速報と運営ツール</b><span>速報、グッズ販売、タイマー、ルール確認、試合分析を作ります。</span></div>
+      <div><b>スマホで遊べるゲーム</b><span>育成RPG、サクセス、すごろく。課金や配布コードの仕組みまで考えます。</span></div>
+      <div><b>Web診断と集計</b><span>質問に答えると結果が出る診断と、回答を集計する管理画面を作ります。</span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="works">
+    <h2><em>WORKS</em>これまでに作ったもの</h2>
+    <p class="note">お客様のお名前は伏せています。ボタンのある作品は、公開中のページを開けます。「紹介のみ」の作品は、お客様向けや準備中のため説明だけ載せています。</p>
+    <div class="bar" id="bar" role="group" aria-label="種類で絞り込む"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="panel" id="how">
+    <h2><em>HOW IT WORKS</em>作り方</h2>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>話を聞く</h3><p>困っていることと、誰が使うかを伺います。</p></div>
+      <div class="step"><b>02</b><h3>試作を触る</h3><p>まず動く試作で、完成の姿を確かめられます。</p></div>
+      <div class="step"><b>03</b><h3>使いながら直す</h3><p>現場の声を聞いて、すぐに手直しします。</p></div>
+      <div class="step"><b>04</b><h3>公開して育てる</h3><p>なるべく無料の範囲で公開し、更新も続けます。</p></div>
+    </div>
+  </section>
+</main>
+<footer>ひかりパートナーズ　／　岐阜県</footer>
+
+<script>
+const CATS = {site:"Webサイト", app:"アプリ・システム", event:"大会・競技", game:"ゲーム・診断"};
+const W = [
+ {"c": "site", "k": "競技団体の公式サイト", "n": "岐阜県ドッジボール協会 HPリニューアル", "d": "登録チームの紹介と年間の大会予定をまとめた、県協会の公式サイトを作り直しました。", "l": [["サイトを見る", "https://gifu-dodgeball-hp.vercel.app"]]},
+ {"c": "site", "k": "全国ポータル", "n": "DODGE PORTAL", "d": "全国の大会予定、協会リンク、コラム、掲示板を集めるポータルサイト。夜のアリーナがテーマです。", "l": [["サイトを見る", "https://dodge-portal.vercel.app"]]},
+ {"c": "site", "k": "選手の特設サイト", "n": "中村光一 No.11 特設サイト", "d": "ドッジボール日本代表選手の紹介とスポンサー紹介のページ。実績、写真、活動記録を掲載しています。", "l": [["サイトを見る", "https://koichi-nakamura-11-japan2026.vercel.app/"]]},
+ {"c": "site", "k": "保険代理店のHP", "n": "ひかりパートナーズ", "d": "保険代理店ひかりパートナーズのホームページ。取り扱う保険と相談の流れを紹介しています。", "l": []},
+ {"c": "site", "k": "美容院のWebページ", "n": "岐阜の美容院", "d": "Instagramの雰囲気に合わせて作った美容院のページ。検索やGoogleマップでの見つかりやすさも考えています。", "l": []},
+ {"c": "site", "k": "接骨院のHP", "n": "笠松町の接骨院", "d": "施術内容、料金、アクセスを1ページにまとめた接骨院のホームページ。", "l": []},
+ {"c": "site", "k": "新規開業のHP", "n": "大垣市の接骨院", "d": "新しく開業する接骨院のホームページ。予約ページを埋め込む前提で作っています。", "l": []},
+ {"c": "site", "k": "サロンの紹介ページ", "n": "女性専用リラクゼーションサロン", "d": "岐阜で開業する女性専用リラクゼーションサロンの紹介ページ。", "l": []},
+ {"c": "site", "k": "サロンの見本サイト", "n": "リラクゼーションサロン", "d": "個人サロンへの提案用に作った、紹介ページと予約の見本。", "l": []},
+ {"c": "site", "k": "教室の体験案内", "n": "学習教室の体験ページ", "d": "子ども向け教室の体験申し込みページと、曜日ごとの空き状況を見られる画面。", "l": []},
+ {"c": "site", "k": "飲食店の紹介ページ", "n": "岐阜駅前の居酒屋", "d": "集客支援の一環で作った、居酒屋の紹介ページ。", "l": []},
+ {"c": "site", "k": "商品紹介ページ", "n": "スポーツ向けマッサージオイル", "d": "スポーツで疲れた身体に向けた2種類のオイルを、高級ホテルのような雰囲気で紹介するページ。", "l": []},
+ {"c": "site", "k": "競技の入口ページ", "n": "はじめてのドッジボール", "d": "はじめての人に競技の魅力を伝え、近くのチームと大会へ案内するページ。", "l": []},
+ {"c": "app", "k": "予約管理システム", "n": "接骨院の予約管理システム", "d": "空き枠がひと目で分かる予約画面と、院長がPCとスマホで予約を管理できる画面。", "l": []},
+ {"c": "app", "k": "チーム連絡アプリ", "n": "ドッジボールチーム連絡アプリ", "d": "予定、出欠、連絡、送迎をまとめるアプリ。チームカラーとロゴに合わせて、複数のチームに仕立てています。", "l": []},
+ {"c": "app", "k": "仮の運営パターン", "n": "解体業 社内連絡アプリ", "d": "現場で使う連絡とスケジュール管理のアプリ。サンプルデータで動く運営パターンの例です。", "l": []},
+ {"c": "app", "k": "仮の運営パターン", "n": "サウナ施設の管理システム", "d": "シフト、給与、経費、在庫を管理するシステム。名前と数字はすべて架空の運営パターンの例です。", "l": []},
+ {"c": "event", "k": "公式グッズ販売", "n": "HIMARAYA CUP 2026 グッズ販売", "d": "チーム単位の注文、確認メール、入金管理、帳票のPDF出力までできる大会グッズの販売サイト。", "l": [["サイトを見る", "https://himarayacup2026.vercel.app/"]]},
+ {"c": "event", "k": "大会速報", "n": "第12回 全日本女子総合選手権 速報", "d": "全国大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/zennihon-joshi12/"]]},
+ {"c": "event", "k": "大会速報", "n": "頂上決戦2026 速報", "d": "大会当日の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/choujou2026/"]]},
+ {"c": "event", "k": "大会速報", "n": "ぴょこたんカップ2026 速報", "d": "県内大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/pyoko2026/"]]},
+ {"c": "event", "k": "大会速報", "n": "第8回 JK杯 速報（バレーボール）", "d": "対戦表、リーグ表、トーナメント表と結果を、参加者がスマホで見られるページ。", "l": [["速報を見る", "https://kobudodge51.github.io/jkcup8/"]]},
+ {"c": "event", "k": "試合用タイマー", "n": "マルチボール用タイマー", "d": "試合時間とセット時間の2つを同時に計る、マルチボール用のタイマー。", "l": [["タイマーを使う", "https://kobudodge51.github.io/multiball-timer/"]]},
+ {"c": "event", "k": "ルール確認アプリ", "n": "ドッジボール競技規則 確認アプリ", "d": "公式ルールをページをめくって読める電子書籍版。検索と○×問題集が付いています。", "l": []},
+ {"c": "event", "k": "試合分析", "n": "ドッジボール試合分析アプリ", "d": "試合のプレーを記録して、数字で振り返るための分析画面。", "l": []},
+ {"c": "event", "k": "座席表", "n": "大会の座席表", "d": "大会当日にチームの席がすぐ分かる座席表。", "l": []},
+ {"c": "game", "k": "チーム育成RPG", "n": "DODGE QUEST", "d": "小学生ドッジボールチームを育てるスマホRPG。16タイプ診断のキャラクターが試合の展開を左右します。", "l": [["遊んでみる", "https://www.dodge-quest-hikari.com/"]]},
+ {"c": "game", "k": "選手育成サクセス", "n": "DODGE SUCCESS", "d": "選手1人を練習とイベントで成長させ、全国優勝を目指すゲーム。経験点を割り振って能力を伸ばします。", "l": [["遊んでみる", "https://dodge-success.vercel.app"]]},
+ {"c": "game", "k": "すごろく×クラブ経営", "n": "DODGEBALL BOARD", "d": "すごろくを進めながら小学生クラブを経営する、スマホ縦画面のゲーム。", "l": []},
+ {"c": "game", "k": "無料Web診断", "n": "DODGE ATTACK 16 TYPES", "d": "40問に答えると、攻撃時の考え方が16タイプで分かる診断。全国の結果を集計する管理画面付きです。", "l": [["診断してみる", "https://dodge-attack-16-types.vercel.app"]]},
+ {"c": "game", "k": "地域の仮想世界", "n": "夜空まち", "d": "商店街の町おこしに集まるボランティアのための、スマホで見られる仮想の街。", "l": []}
+];
+const ORDER = Object.keys(CATS);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const count = c => W.filter(w=>w.c===c).length;
+const stats = document.getElementById("stats"), bar = document.getElementById("bar"), grid = document.getElementById("grid");
+stats.innerHTML = ORDER.map(c=>`<button type="button" data-k="${c}"><b>${count(c)}</b><span>${CATS[c]}</span></button>`).join("");
+let cur = "all";
+function draw(){
+  bar.innerHTML = [["all","すべて",W.length],...ORDER.map(k=>[k,CATS[k],count(k)])].map(([k,v,n])=>`<button class="pill" type="button" id="chip-${k}" data-k="${k}" aria-pressed="${k===cur}">${v}<i>${n}</i></button>`).join("");
+  const list = (cur==="all" ? W : W.filter(w=>w.c===cur)).slice().sort((a,b)=>(b.l.length>0)-(a.l.length>0) || ORDER.indexOf(a.c)-ORDER.indexOf(b.c));
+  grid.innerHTML = list.map(w=>`<article class="work ${w.l.length?"on":"off"}"><div class="top-row"><span class="kind">${esc(w.k)}</span></div><h3 class="name">${esc(w.n)}</h3><p>${esc(w.d)}</p><div class="links">${w.l.length?w.l.map(([t,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${t} →</a>`).join(""):`<span class="only">紹介のみ</span>`}</div></article>`).join("");
+}
+bar.addEventListener("click",e=>{const b=e.target.closest(".pill");if(!b)return;cur=b.dataset.k;draw();document.getElementById("chip-"+cur).focus();});
+stats.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cur=b.dataset.k;draw();document.getElementById("works").scrollIntoView();});
+draw();
+(function(){const bs=[...stats.querySelectorAll("b")];if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const to=bs.map(b=>+b.textContent);const t0=performance.now();bs.forEach(b=>b.textContent="0");(function f(n){const k=Math.min(1,(n-t0)/900),e=1-Math.pow(1-k,3);bs.forEach((b,i)=>b.textContent=Math.round(to[i]*e));if(k<1)requestAnimationFrame(f);})(t0);})();
+</script>
+
+</body>
+</html>
