@@ -111,6 +111,23 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spaci
 .step b{grid-row:span 2;font-family:var(--display);font-size:1.6rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .step h3{font-family:var(--head);font-weight:900;font-size:.88rem;color:var(--ink);line-height:1.3}
 .step p{font-size:.74rem;color:var(--ink2);line-height:1.4}
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))!important}
+.work{flex-direction:row!important;gap:12px!important;padding:10px!important;align-items:stretch}
+.work::before{display:none}
+.thumb{position:relative;flex:0 0 42%;max-width:180px;aspect-ratio:16/10;align-self:flex-start;border-radius:9px;overflow:hidden;display:block;text-decoration:none;box-shadow:0 0 0 1px var(--hair),0 6px 14px -10px rgba(8,80,72,.6)}
+.thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:1px;padding:8px 9px;color:#fff;background:radial-gradient(circle at 85% 15%,rgba(255,227,154,.55),transparent 45%),linear-gradient(135deg,#81d8d0,#0f8a7c 60%,#0b5e56)}
+.thumb.c-app .ph{background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.5),transparent 45%),linear-gradient(135deg,#a6e6df,#2cb5a3 55%,#c9a24a)}
+.thumb.c-event .ph{background:radial-gradient(circle at 85% 15%,rgba(129,216,208,.6),transparent 45%),linear-gradient(135deg,#f3d98b,#c9a24a 55%,#0f8a7c)}
+.thumb.c-game .ph{background:radial-gradient(circle at 85% 15%,rgba(255,227,154,.6),transparent 45%),linear-gradient(135deg,#0b5e56,#0f8a7c 50%,#81d8d0)}
+.thumb .ph::before{content:"";position:absolute;right:-14px;top:-14px;width:56px;height:56px;border:2px solid rgba(255,255,255,.45);border-radius:50%}
+.thumb .ph b{font-family:var(--head);font-weight:900;font-size:.8rem;line-height:1.2;text-shadow:0 1px 3px rgba(0,0,0,.25);overflow-wrap:anywhere}
+.thumb .ph small{font-size:.6rem;opacity:.9}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:#fff;transition:transform .35s}
+.work.on:hover .thumb img{transform:scale(1.05)}
+.body{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;flex:1}
+.thumb .ph b{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.work.off .thumb{opacity:.85}
+@media (max-width:480px){.thumb{flex-basis:38%}}
 footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.75rem;color:var(--on2)}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.can{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs{display:none}}
 @media (max-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stats button{display:block}}
@@ -232,7 +249,12 @@ let cur = "all";
 function draw(){
   bar.innerHTML = [["all","すべて",W.length],...ORDER.map(k=>[k,CATS[k],count(k)])].map(([k,v,n])=>`<button class="pill" type="button" id="chip-${k}" data-k="${k}" aria-pressed="${k===cur}">${v}<i>${n}</i></button>`).join("");
   const list = (cur==="all" ? W : W.filter(w=>w.c===cur)).slice().sort((a,b)=>(b.l.length>0)-(a.l.length>0) || ORDER.indexOf(a.c)-ORDER.indexOf(b.c));
-  grid.innerHTML = list.map(w=>`<article class="work ${w.l.length?"on":"off"}"><div class="top-row"><span class="kind">${esc(w.k)}</span></div><h3 class="name">${esc(w.n)}</h3><p>${esc(w.d)}</p><div class="links">${w.l.length?w.l.map(([t,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${t} →</a>`).join(""):`<span class="only">紹介のみ</span>`}</div></article>`).join("");
+  grid.innerHTML = list.map(w=>{
+    const u = w.l.length ? w.l[0][1] : "";
+    const shot = u ? `<img src="https://s0.wp.com/mshots/v1/${encodeURIComponent(u)}?w=640&h=400" alt="${esc(w.n)}のトップページ" loading="lazy" width="640" height="400" onerror="this.remove()">` : "";
+    const thumb = `<${u?`a href="${u}" target="_blank" rel="noopener" tabindex="-1"`:"div"} class="thumb c-${w.c}"><span class="ph"><b>${esc(w.n)}</b><small>${esc(w.k)}</small></span>${shot}</${u?"a":"div"}>`;
+    return `<article class="work ${u?"on":"off"}">${thumb}<div class="body"><span class="kind">${esc(w.k)}</span><h3 class="name">${esc(w.n)}</h3><p>${esc(w.d)}</p><div class="links">${u?w.l.map(([t,h])=>`<a class="btn" href="${h}" target="_blank" rel="noopener">${t} →</a>`).join(""):`<span class="only">紹介のみ</span>`}</div></div></article>`;
+  }).join("");
 }
 bar.addEventListener("click",e=>{const b=e.target.closest(".pill");if(!b)return;cur=b.dataset.k;draw();document.getElementById("chip-"+cur).focus();});
 stats.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cur=b.dataset.k;draw();document.getElementById("works").scrollIntoView();});
