@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ドッジボールチーム連絡アプリ｜ひかりパートナーズ</title>
+<meta name="description" content="練習・大会の予定、出欠、連絡、メンバー管理を1つにまとめた、ドッジボールチーム専用の連絡アプリです。チームカラーとロゴに合わせて仕立てます。">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+
+/* Layout: 乾いたオリーブカーキの地に、幾何学模様を薄く散らす。象牙色のパネルではっきり区切り、詰めた組版で1画面の情報量を増やす */
+:root{
+  --bg1:#3fb8ab; --bg2:#4fc1b5; --bg3:#0e7d70; --tile:#0b5e56;
+  --ivory:#ffffff; --card:#ffffff; --ink:#0d2b29; --ink2:#355754; --muted:#6c8784; --hair:#d4ece8;
+  --on:#ffffff; --on2:#f1fbf9;
+  --khaki:#0f8a7c; --olive:#0b6b60; --brass:#c9a24a; --gold:#ffe39a; --rust:#c9a24a; --teal:#0f8a7c; --sky:#81d8d0;
+  --grad:linear-gradient(110deg,#81d8d0 0%,#2cb5a3 30%,#0b8a77 52%,#c9a24a 78%,#f3d98b 100%);
+  --grad-soft:linear-gradient(110deg,rgba(129,216,208,.22),rgba(15,138,124,.12),rgba(201,162,74,.16));
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --head:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(900px 520px at 85% -5%,rgba(255,227,154,.45),transparent 60%),radial-gradient(700px 420px at 55% 0%,rgba(129,216,208,.55),transparent 65%),linear-gradient(160deg,var(--bg1) 0%,#2aa898 25%,#36b3a5 50%,#16917f 75%,var(--bg3) 100%) fixed;color:var(--on);font-family:var(--body);font-size:14.5px;line-height:1.55;font-feature-settings:"palt";overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+.geo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.geo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.geo svg{position:absolute;inset:0;width:100%;height:100%}
+.geo .spin{transform-box:fill-box;transform-origin:center;animation:spin 60s linear infinite}
+.geo .bob{animation:bob 9s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes bob{to{transform:translateY(18px)}}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:0;z-index:30;background:rgba(11,94,86,.62);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grad)}
+.hin{display:flex;align-items:center;gap:12px;min-height:50px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo img{height:30px;width:auto;border-radius:6px}
+.logo span{font-family:var(--display);font-weight:900;font-size:1.2rem;letter-spacing:.03em}
+.logo b{color:var(--gold);margin-left:3px}
+.back{margin-left:auto;font-family:var(--head);font-weight:700;font-size:.82rem;text-decoration:none;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.5)}
+.back:hover{background:rgba(255,255,255,.15)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:center;padding-block:26px 18px}
+.eb{display:inline-block;padding:3px 14px;border-radius:999px;font-family:var(--display);font-weight:900;letter-spacing:.14em;font-size:.95rem;color:#0b3833;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),linear-gradient(100deg,#fff,#ffe39a 50%,#e3b85a);box-shadow:0 6px 14px -6px rgba(8,80,72,.5)}
+h1{font-family:var(--head);font-weight:900;font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.2;margin-top:10px;text-shadow:0 3px 16px rgba(6,70,64,.35)}
+h1 span{color:#ffe7a0;text-shadow:0 3px 0 rgba(6,70,64,.45),0 0 20px rgba(6,70,64,.3)}
+.lead{margin-top:10px;font-size:.92rem;color:var(--on2);text-shadow:0 1px 2px rgba(8,80,72,.45)}
+.hero-img img{border-radius:16px;box-shadow:0 26px 50px -24px rgba(4,50,45,.8)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 20px;min-height:42px;border-radius:999px;font-family:var(--head);font-weight:900;font-size:.9rem;text-decoration:none;color:#0b3833;background:linear-gradient(110deg,#a6e6df 0%,#81d8d0 30%,#f3d98b 70%,#a6e6df 100%);background-size:200% 100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 8px 18px -8px rgba(6,70,64,.7);transition:background-position .35s}
+.btn:hover{background-position:100% 0}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7);box-shadow:none}
+
+.panel{position:relative;background:#fff;border-radius:18px;padding:18px;margin-bottom:12px;color:var(--ink);box-shadow:0 18px 40px -24px rgba(6,70,64,.6);overflow:hidden}
+.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad)}
+h2{font-family:var(--head);font-weight:900;font-size:1.1rem;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spacing:.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:.8rem;color:var(--ink2);margin-top:3px}
+
+.pains{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pains li{padding:10px 12px;border-radius:12px;background:#f3faf9;border:1px dashed #9fd6cf;font-size:.82rem;line-height:1.45;color:var(--ink2)}
+.pains li b{display:block;color:var(--ink);font-family:var(--head);font-weight:900;font-size:.88rem;margin-bottom:2px}
+.arrow{text-align:center;font-family:var(--head);font-weight:900;color:#0b6b60;margin-top:10px;font-size:.95rem}
+.arrow::before{content:"";display:block;width:0;height:0;margin:0 auto 4px;border:12px solid transparent;border-top:14px solid #2cb5a3;border-bottom:0}
+
+.screens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.scr{display:flex;flex-direction:column;gap:6px;min-width:0}
+.phone{border-radius:26px;padding:7px;background:linear-gradient(145deg,#f7e3a6,#c9a24a 45%,#8a6a23);box-shadow:0 14px 28px -16px rgba(6,70,64,.7)}
+.phone div{border-radius:20px;overflow:hidden;aspect-ratio:390/700;background:#fff}
+.phone img{width:100%}
+.scr b{font-family:var(--head);font-weight:900;font-size:.95rem;color:#0b6b60}
+.scr span{font-size:.78rem;color:var(--ink2);line-height:1.45}
+
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.role{border-radius:14px;padding:12px 14px;border:1px solid var(--hair);background:var(--grad-soft),#fff}
+.role h3{font-family:var(--head);font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px}
+.role h3 i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;color:#fff;background:linear-gradient(135deg,#2cb5a3,#0b6b60)}
+.role ul{margin:6px 0 0;padding-left:1.1em;font-size:.82rem;color:var(--ink2);line-height:1.55}
+
+.feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.feats div{padding:8px 10px;border-radius:10px;border:1px solid var(--hair);background:#fff;min-width:0}
+.feats b{display:block;font-family:var(--head);font-weight:900;font-size:.84rem}
+.feats span{display:block;font-size:.72rem;color:var(--ink2);line-height:1.4}
+
+.flow{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;counter-reset:f}
+.flow li{position:relative;padding:10px 10px 10px;border-radius:12px;background:#fff;border:1px solid var(--hair);counter-increment:f;font-size:.76rem;color:var(--ink2);line-height:1.45}
+.flow li::before{content:counter(f,decimal-leading-zero);display:block;font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.flow b{display:block;font-family:var(--head);font-weight:900;font-size:.88rem;color:var(--ink)}
+
+.faq details{border-top:1px solid var(--hair);padding:9px 2px}
+.faq details:first-of-type{border-top:0}
+.faq summary{cursor:pointer;font-family:var(--head);font-weight:900;font-size:.9rem;list-style:none;display:flex;gap:8px}
+.faq summary::before{content:"Q";font-family:var(--display);color:#0f8a7c;font-size:1.1rem;line-height:1.2}
+.faq p{font-size:.82rem;color:var(--ink2);margin:4px 0 0 18px}
+.end{text-align:center;padding:18px 18px 22px}
+.end p{font-size:.86rem;color:var(--ink2);margin:6px 0 12px}
+footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:var(--on2);padding-block:6px 26px}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.pains,.feats{grid-template-columns:repeat(2,minmax(0,1fr))}.screens{grid-template-columns:repeat(2,minmax(0,1fr))}.roles{grid-template-columns:minmax(0,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.geo .spin,.geo .bob{animation:none}}
+</style>
+</head>
+<body>
+<div class="geo" aria-hidden="true"><svg viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#fff6d2"/><stop offset="1" stop-color="#e3b85a"/></linearGradient>
+  <pattern id="dia" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v14" stroke="#ffffff" stroke-opacity=".35" stroke-width="2"/></pattern></defs>
+  <circle cx="1250" cy="110" r="170" stroke="url(#gg)" stroke-opacity=".8" stroke-width="2.5"/>
+  <circle cx="1250" cy="110" r="112" fill="#ffffff" fill-opacity=".14"/>
+  <circle cx="1250" cy="110" r="230" stroke="#ffffff" stroke-opacity=".25" stroke-dasharray="2 9" stroke-width="2"/>
+  <g class="spin"><path d="M1060 380 l78 -135 l78 135 z" stroke="#ffe39a" stroke-opacity=".8" stroke-width="2.5"/></g>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" fill="url(#dia)"/>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" stroke="#ffffff" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M-40 230 a180 180 0 0 1 360 0 z" fill="#81d8d0" fill-opacity=".25"/>
+  <path d="M-40 230 a120 120 0 0 1 240 0" stroke="#ffffff" stroke-opacity=".5" stroke-width="2"/>
+  <g class="bob"><circle cx="370" cy="130" r="14" fill="url(#gg)"/><circle cx="1340" cy="560" r="10" fill="#ffffff" fill-opacity=".9"/><circle cx="640" cy="890" r="12" fill="#ffe39a"/><rect x="930" y="600" width="18" height="18" transform="rotate(45 939 609)" fill="#ffffff" fill-opacity=".8"/></g>
+  <g stroke="#ffffff" stroke-opacity=".28" stroke-width="2"><path d="M1170 770 l230 -230"/><path d="M1200 800 l230 -230"/><path d="M1230 830 l230 -230"/><path d="M1260 860 l230 -230"/></g>
+  <path d="M520 40 l44 0 l0 44" stroke="#ffe39a" stroke-opacity=".85" stroke-width="2.5"/>
+  <path d="M880 960 q60 -80 120 0 t120 0 t120 0" stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5"/>
+  <g class="spin"><path d="M300 860 l20 -35 l40 0 l20 35 l-20 35 l-40 0 z" stroke="#ffe39a" stroke-opacity=".8" stroke-width="2"/></g>
+  <g stroke="#ffffff" stroke-opacity=".55" stroke-width="2.5"><path d="M760 120 l16 0 M768 112 l0 16"/><path d="M180 380 l14 0 M187 373 l0 14"/><path d="M1380 360 l14 0 M1387 353 l0 14"/></g>
+  <circle cx="820" cy="430" r="240" stroke="#ffffff" stroke-opacity=".14" stroke-width="1.5" stroke-dasharray="4 10"/>
+  <path d="M1000 690 l120 0 l-60 -104 z" fill="#0b5e56" fill-opacity=".18"/>
+  <circle cx="460" cy="620" r="70" fill="#ffe39a" fill-opacity=".12" stroke="#ffe39a" stroke-opacity=".4" stroke-width="1.5"/>
+</svg></div>
+<header><div class="wrap hin">
+  <a class="logo" href="index.html"><img src="logo.png" alt=""><span>HIKARI<b>PARTNERS</b></span></a>
+  <a class="back" href="index.html">← 制作実績へ戻る</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eb">TEAM APP</span>
+      <h1>チームの予定と連絡を、<br><span>スマホひとつに。</span></h1>
+      <p class="lead">ドッジボールチーム専用の連絡アプリです。練習・大会の予定、出欠、連絡、メンバー管理を1か所にまとめ、指導者・保護者・運営みんなの手間を減らします。チームカラーとロゴに合わせて、チームごとに仕立てます。</p>
+      <div class="cta"><a class="btn" href="#screens">画面を見る ↓</a><a class="btn ghost" href="#flow">導入の流れ</a></div>
+    </div>
+    <div class="hero-img"><img src="team-app.png" alt="ホーム・スケジュール・連絡・メンバーの4画面" width="1600" height="1000"></div>
+  </section>
+
+  <section class="panel">
+    <h2><em>PROBLEM</em>こんなことで困っていませんか</h2>
+    <ul class="pains">
+      <li><b>連絡が流れてしまう</b>LINEグループで大事な連絡が雑談に埋もれ、見落としが出る。</li>
+      <li><b>出欠集計が大変</b>返信を1件ずつ数えて、未回答の人に個別で催促している。</li>
+      <li><b>予定がバラバラ</b>練習・大会・遠征の予定が、紙やメッセージに散らばっている。</li>
+      <li><b>誰に何を送るか迷う</b>選手・保護者・運営で、伝えたい相手と内容が違う。</li>
+    </ul>
+    <p class="arrow">このアプリで、まとめて解決します</p>
+  </section>
+
+  <section class="panel" id="screens">
+    <h2><em>SCREENS</em>実際の画面</h2>
+    <p class="sub">画面の名前はすべてサンプルです。</p>
+    <div class="screens">
+      <div class="scr"><div class="phone"><div><img src="app-home.jpg" alt="ホーム画面" loading="lazy"></div></div><b>ホーム</b><span>次の予定がひと目で分かり、その場で出欠を回答できます。未回答や次の大会までの日数も表示します。</span></div>
+      <div class="scr"><div class="phone"><div><img src="app-sched.jpg" alt="スケジュール画面" loading="lazy"></div></div><b>スケジュール</b><span>練習・大会・練習試合・誕生日をカレンダーで色分け。部門ごとに絞り込めます。</span></div>
+      <div class="scr"><div class="phone"><div><img src="app-msg.jpg" alt="連絡画面" loading="lazy"></div></div><b>連絡</b><span>全体・部門・保護者・運営のグループで連絡。メンバー限定のクローズグループも作れます。</span></div>
+      <div class="scr"><div class="phone"><div><img src="app-mem.jpg" alt="メンバー画面" loading="lazy"></div></div><b>メンバー</b><span>学年・誕生日・役割を一覧で確認。ファイター・U-15・保護者を色で見分けられます。</span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><em>MERIT</em>使う人ごとのメリット</h2>
+    <div class="roles">
+      <div class="role"><h3><i>指</i>指導者・監督</h3><ul><li>出欠が自動で集計され、人数がすぐ分かる</li><li>大会や練習の予定を一度登録すれば全員に届く</li><li>未回答の人がひと目で分かる</li></ul></div>
+      <div class="role"><h3><i>保</i>保護者</h3><ul><li>出欠をワンタップで回答できる</li><li>送迎やお弁当など、必要な連絡だけ届く</li><li>過去の連絡もすぐ探せる</li></ul></div>
+      <div class="role"><h3><i>運</i>チーム運営</h3><ul><li>メンバー情報を1か所で管理できる</li><li>部門（一般・ジュニアなど）をまとめて運営できる</li><li>申請や確認待ちを一覧で処理できる</li></ul></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><em>FEATURES</em>おもな機能</h2>
+    <div class="feats">
+      <div><b>LINEでログイン</b><span>初回だけLINE連携。2回目からはパターンや顔認証で開けます。</span></div>
+      <div><b>出欠の回答と集計</b><span>参加・遅れて参加・不参加の3択。人数は自動で集計。</span></div>
+      <div><b>カレンダー</b><span>練習・大会・誕生日・個人予定を色分け表示。</span></div>
+      <div><b>グループ連絡</b><span>オープンとクローズのグループを使い分け。</span></div>
+      <div><b>お知らせ</b><span>練習予定の公開や締め切りを全員に知らせます。</span></div>
+      <div><b>メンバー管理</b><span>学年・学校・誕生日・役割を一覧で管理。</span></div>
+      <div><b>申請・確認</b><span>参加申請などを運営がまとめて確認。</span></div>
+      <div><b>チーム仕様の見た目</b><span>チームカラーとロゴで、自分たちのアプリに。</span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="flow">
+    <h2><em>FLOW</em>導入の流れ</h2>
+    <ol class="flow">
+      <li><b>お話を聞く</b>チームの人数、部門、困っていることを伺います。</li>
+      <li><b>見た目を決める</b>チームカラーとロゴをいただき、画面を仕立てます。</li>
+      <li><b>お試し版を触る</b>サンプルの予定で、実際の使い心地を確かめます。</li>
+      <li><b>本番の準備</b>LINEログインを設定し、メンバーを登録します。</li>
+      <li><b>使いながら改善</b>使ってみての要望を聞き、手直しを続けます。</li>
+    </ol>
+  </section>
+
+  <section class="panel faq">
+    <h2><em>FAQ</em>よくある質問</h2>
+    <details open><summary>アプリストアからのインストールは必要ですか？</summary><p>必要ありません。ブラウザで開いて、スマホのホーム画面に追加すればアプリのように使えます。</p></details>
+    <details><summary>ドッジボール以外のチームでも使えますか？</summary><p>使えます。もともとドッジボールチーム向けに作りましたが、予定・出欠・連絡の仕組みはほかのスポーツチームにも合わせられます。</p></details>
+    <details><summary>チームの色やロゴにできますか？</summary><p>できます。チームカラーとロゴに合わせて、画面全体を仕立てます。</p></details>
+    <details><summary>一般とジュニアなど、部門が分かれていても使えますか？</summary><p>使えます。部門ごとに予定や連絡を分けたり、まとめて見たりできます。</p></details>
+  </section>
+
+  <section class="panel end">
+    <h2 style="justify-content:center"><em>CONTACT</em>まずはお試し版から</h2>
+    <p>チームの色とロゴで作ったお試し版を、実際に触って確かめられます。</p>
+    <a class="btn" href="index.html">制作実績のトップへ戻る</a>
+  </section>
+</main>
+<footer>ひかりパートナーズ　／　岐阜県</footer>
+</body>
+</html>
