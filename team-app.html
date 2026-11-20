@@ -30,7 +30,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(900px 520px at 90% -5%,rgba(212,175,55,.24),transparent 60%),radial-gradient(700px 460px at 0% 30%,rgba(92,203,245,.12),transparent 65%),linear-gradient(160deg,#1a1d22 0%,#0d0f12 50%,#050607 100%) fixed;color:#e9edf1;font-family:var(--body);font-size:14.5px;line-height:1.55;font-feature-settings:"palt";overflow-x:hidden}
+body{margin:0;background:radial-gradient(900px 520px at 90% -5%,rgba(212,175,55,.24),transparent 60%),radial-gradient(700px 460px at 0% 30%,rgba(163,36,63,.2),transparent 65%),linear-gradient(160deg,#1a1d22 0%,#0d0f12 50%,#050607 100%) fixed;color:#e9edf1;font-family:var(--body);font-size:14.5px;line-height:1.55;font-feature-settings:"palt";overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3,p{margin:0}
@@ -53,6 +53,7 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
 
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:center;padding-block:26px 18px}
 .eb{display:inline-block;padding:3px 14px;border-radius:999px;font-family:var(--display);font-weight:900;letter-spacing:.14em;font-size:.95rem;color:#0b0c0e;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6e27a,#d4af37 55%,#a07a1c)}
+.eb+h1::before{content:"";display:block;width:56px;height:4px;border-radius:4px;background:linear-gradient(100deg,#7a1630,#a3243f 55%,#c8334f);margin-bottom:10px}
 h1{font-family:var(--head);font-weight:900;font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.2;margin-top:10px;color:#f4f6f8}
 h1 span{background:linear-gradient(100deg,#fff6c8,#f6e27a 35%,#d4af37 70%,#b8902a);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{margin-top:10px;font-size:.92rem;color:#c9d0d8}
@@ -83,13 +84,13 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spaci
 .scr span{font-size:.78rem;color:#aeb6bf;line-height:1.45}
 
 .roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-.role{border-radius:14px;padding:12px 14px;border:1px solid rgba(192,199,207,.25);border-top:2px solid #d4af37;background:rgba(255,255,255,.03)}
+.role{border-radius:14px;padding:12px 14px;border:1px solid rgba(192,199,207,.25);border-top:2px solid #a3243f;background:rgba(255,255,255,.03)}
 .role h3{font-family:var(--head);font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;color:#f4f6f8}
-.role h3 i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;color:#fff;background:linear-gradient(135deg,#9fe3fb,#2a9fd0);color:#0b0c0e}
+.role h3 i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;color:#fff;background:linear-gradient(100deg,#7a1630,#a3243f 55%,#c8334f);color:#fff}
 .role ul{margin:6px 0 0;padding-left:1.1em;font-size:.82rem;color:#aeb6bf;line-height:1.55}
 
 .feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
-.feats div{padding:8px 10px;border-radius:10px;border:1px solid rgba(192,199,207,.25);border-left:3px solid #5ccbf5;background:rgba(255,255,255,.03);min-width:0}
+.feats div{padding:8px 10px;border-radius:10px;border:1px solid rgba(192,199,207,.25);border-left:3px solid #a3243f;background:rgba(255,255,255,.03);min-width:0}
 .feats b{display:block;font-family:var(--head);font-weight:900;font-size:.84rem;color:#f4f6f8}
 .feats span{display:block;font-size:.72rem;color:#aeb6bf;line-height:1.4}
 
@@ -101,7 +102,7 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spaci
 .faq details{border-top:1px solid rgba(192,199,207,.2);padding:9px 2px}
 .faq details:first-of-type{border-top:0}
 .faq summary{cursor:pointer;font-family:var(--head);font-weight:900;font-size:.9rem;list-style:none;display:flex;gap:8px;color:#f4f6f8}
-.faq summary::before{content:"Q";font-family:var(--display);color:#d4af37;font-size:1.1rem;line-height:1.2}
+.faq summary::before{content:"Q";font-family:var(--display);color:#d2405c;font-size:1.1rem;line-height:1.2}
 .faq p{font-size:.82rem;color:#aeb6bf;margin:4px 0 0 18px}
 .end{text-align:center;padding:18px 18px 22px}
 .end p{font-size:.86rem;color:#aeb6bf;margin:6px 0 12px}
