@@ -149,12 +149,15 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spaci
 .feat::before{content:"PICK UP";position:absolute;left:18px;top:-14px;padding:3px 14px;border-radius:999px;font-family:var(--display);font-weight:900;font-size:.95rem;letter-spacing:.14em;color:#0b0c0e;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6e27a,#d4af37 55%,#a07a1c);box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
 .feat-img img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 14px 30px -18px rgba(6,70,64,.8)}
 .badge{display:inline-block;font-family:var(--head);font-weight:900;font-size:.72rem;padding:2px 10px;border-radius:999px;color:#fff;background:linear-gradient(100deg,#7a1630,#a3243f 55%,#c8334f);box-shadow:0 4px 12px -4px rgba(163,36,63,.7)}
-.feat-h{color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.45);font-family:var(--head);font-weight:900;font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.25;margin-top:6px;letter-spacing:-.01em}
+.feat-h{position:relative;display:block;width:fit-content;max-width:100%;margin-top:8px;padding-bottom:8px;font-family:var(--head);font-weight:900;font-size:clamp(1.6rem,3.3vw,2.4rem);line-height:1.2;letter-spacing:.01em;color:#fff;text-shadow:0 0 18px rgba(212,175,55,.45),0 2px 0 rgba(0,0,0,.6)}
+.feat-h::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;border-radius:4px;background:linear-gradient(90deg,#a3243f,#d4af37 40%,#f6e27a 60%,#d4af37 80%,transparent);background-size:200% 100%;animation:barflow 4s linear infinite}
+.feat-h small{display:block;font-size:.55em;letter-spacing:.18em;color:#f3dc9a;margin-bottom:2px}
+@keyframes barflow{to{background-position:-200% 0}}
 .feat-lead{font-size:.84rem;color:#c9d0d8;line-height:1.55;margin-top:6px}
 .merits{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .merits li{padding:7px 10px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(192,199,207,.35);border-left:3px solid #a3243f}
-.merits b{display:block;font-family:var(--head);font-weight:900;font-size:.8rem;letter-spacing:-.02em;white-space:nowrap;color:#5ccbf5}
-.merits span{display:block;font-size:.72rem;color:#aeb6bf;line-height:1.4}
+.merits b{display:block;font-family:var(--head);font-weight:900;font-size:.8rem;letter-spacing:-.02em;white-space:nowrap;color:#f3dc9a}
+.merits span{display:block;font-size:.72rem;color:#d4d9de;line-height:1.4}
 .feat-cta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
 .btn.big{font-size:.9rem!important;padding:7px 22px!important;min-height:42px!important;color:#0b0c0e!important;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6e27a,#d4af37 55%,#a07a1c)!important;box-shadow:0 8px 20px -8px rgba(212,175,55,.6)!important}
 .note2{font-size:.72rem;color:#aeb6bf}
@@ -167,7 +170,7 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spaci
 .step b.sn img{width:28px;height:28px;filter:drop-shadow(0 3px 5px rgba(11,107,96,.18))}
 .step b.sn i{order:-1;font-style:normal;font-family:var(--display);font-weight:900;font-size:.68rem;line-height:1;padding:2px 6px 1px;border-radius:999px;color:#fff;background:linear-gradient(110deg,#2cb5a3,#0b8a77 55%,#c9a24a);white-space:nowrap}
 .merits li{display:flow-root}
-.merits .mic{float:left;width:34px;height:34px;margin:1px 8px 0 0;filter:drop-shadow(0 2px 6px rgba(92,203,245,.35))}
+.merits .mic{float:left;width:34px;height:34px;margin:1px 8px 0 0;filter:drop-shadow(0 2px 6px rgba(212,175,55,.35))}
 @media (max-width:420px){.merits .mic{float:none;display:inline-block;width:20px;height:20px;vertical-align:-4px;margin:0 6px 0 0}.merits li b{display:inline}}
 @media (min-width:861px) and (max-width:1120px){.merits{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.merits b{white-space:normal}}
@@ -242,7 +245,7 @@ footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-i
     <div class="feat-img"><img src="team-app.png" alt="チーム連絡アプリのホーム・スケジュール・連絡・メンバー画面" width="1600" height="1000"></div>
     <div class="feat-txt">
       <span class="badge">いちばんのおすすめ</span>
-      <h2 class="feat-h">ドッジボールチーム連絡アプリ</h2>
+      <h2 class="feat-h"><small>ドッジボール</small>チーム連絡アプリ</h2>
       <p class="feat-lead">練習・大会の予定、出欠、連絡、メンバー管理を1つのアプリにまとめました。LINEグループで流れてしまう情報を整理し、指導者・保護者・運営の手間を減らします。チームカラーとロゴに合わせて、チームごとに仕立てます。</p>
       <ul class="merits">
         <li><img class="mic" src="icons/mt-tap.png" alt="" width="34" height="34"><b>出欠がワンタップ</b><span>参加・遅れて参加・不参加を押すだけ。集計は自動です。</span></li>
