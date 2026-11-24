@@ -171,6 +171,27 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spaci
 @media (max-width:420px){.merits .mic{float:none;display:inline-block;width:20px;height:20px;vertical-align:-4px;margin:0 6px 0 0}.merits li b{display:inline}}
 @media (min-width:861px) and (max-width:1120px){.merits{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:640px){.merits b{white-space:normal}}
+.stats{gap:10px!important}
+.stats button{position:relative;isolation:isolate;display:flex!important;flex-direction:column;justify-content:flex-end;min-height:104px;padding:12px 14px!important;border-radius:18px!important;overflow:hidden;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s}
+.stats button:nth-child(1){animation-delay:.05s;--c1:#0f9a88;--c2:#0a5d55}
+.stats button:nth-child(2){animation-delay:.15s;--c1:#1f8fb8;--c2:#0d4f6e}
+.stats button:nth-child(3){animation-delay:.25s;--c1:#b8862e;--c2:#6b4a12}
+.stats button:nth-child(4){animation-delay:.35s;--c1:#5a7a3a;--c2:#2f4520}
+.stats button{background:linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 48%) padding-box,linear-gradient(150deg,var(--c1),var(--c2)) padding-box,linear-gradient(135deg,#fff,#ffe39a 45%,rgba(255,255,255,.3)) border-box!important}
+.stats button::before{content:"";position:absolute;z-index:-1;right:-26px;top:-30px;width:110px;height:110px;border-radius:50%;border:2px solid rgba(255,255,255,.28);box-shadow:0 0 0 14px rgba(255,255,255,.07),0 0 0 30px rgba(255,255,255,.04);animation:spin2 14s linear infinite}
+.stats button:nth-child(2)::before{border-radius:22px}
+.stats button:nth-child(3)::before{border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%);border:0;background:rgba(255,255,255,.12);box-shadow:none}
+.stats button:nth-child(4)::before{border-radius:0;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);border:0;background:rgba(255,255,255,.12);box-shadow:none}
+.stats b{font-size:3rem!important;letter-spacing:-.02em}
+.stats b::after{content:"作品";font-family:var(--head);font-size:.8rem;margin-left:4px;-webkit-text-fill-color:#fff;color:#fff;opacity:.85}
+.stats span{font-size:.8rem!important;letter-spacing:.06em;display:flex;align-items:center;gap:6px}
+.stats span::after{content:"→";margin-left:auto;font-family:var(--display);opacity:.7;transition:transform .25s}
+.stats button:hover{transform:translateY(-6px) rotate(-1.2deg) scale(1.02)!important}
+.stats button:hover span::after{transform:translateX(4px);opacity:1}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.92)}}
+@keyframes spin2{to{transform:rotate(360deg)}}
+@media (max-width:480px){.stats button{min-height:88px}.stats b{font-size:2.4rem!important}}
+@media (prefers-reduced-motion:reduce){.stats button,.stats button::before{animation:none}}
 footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.75rem;color:var(--on2)}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.can{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs{display:none}}
 @media (max-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stats button{display:block}}
@@ -287,6 +308,7 @@ const W = [
  {"c": "event", "k": "大会速報", "n": "第12回 全日本女子総合選手権 速報", "d": "全国大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/zennihon-joshi12/"]]},
  {"c": "event", "k": "大会速報", "n": "頂上決戦2026 速報", "d": "大会当日の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/choujou2026/"]]},
  {"c": "event", "k": "大会速報", "n": "ぴょこたんカップ2026 速報", "d": "県内大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/pyoko2026/"]]},
+ {"c": "event", "k": "大会速報", "n": "Re:RISE CUP 2026 速報", "d": "U-15部門の大会結果を、当日その場でスマホから見られる速報ページ。実際の大会で運用しました。", "l": [["速報を見る", "https://kobudodge51.github.io/rerise2026/"]]},
  {"c": "event", "k": "大会速報", "n": "第8回 JK杯 速報（バレーボール）", "d": "対戦表、リーグ表、トーナメント表と結果を、参加者がスマホで見られるページ。", "l": [["速報を見る", "https://kobudodge51.github.io/jkcup8/"]]},
  {"c": "event", "k": "試合用タイマー", "n": "マルチボール用タイマー", "d": "試合時間とセット時間の2つを同時に計る、マルチボール用のタイマー。", "l": [["タイマーを使う", "https://kobudodge51.github.io/multiball-timer/"]]},
  {"c": "event", "k": "ルール確認アプリ", "n": "ドッジボール競技規則 確認アプリ", "d": "公式ルールをページをめくって読める電子書籍版。検索と○×問題集が付いています。", "l": []},

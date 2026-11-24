@@ -106,6 +106,9 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spaci
 .faq p{font-size:.82rem;color:#aeb6bf;margin:4px 0 0 18px}
 .end{text-align:center;padding:18px 18px 22px}
 .end p{font-size:.86rem;color:#aeb6bf;margin:6px 0 12px}
+.fshot{margin:-8px -10px 8px;border-radius:9px 9px 0 0;overflow:hidden;aspect-ratio:390/300;background:#000;border-bottom:1px solid rgba(212,175,55,.35)}
+.fshot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.feats div:hover .fshot img{transform:scale(1.06)}
 footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:#8a929b;padding-block:6px 26px}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.pains,.feats{grid-template-columns:repeat(2,minmax(0,1fr))}.screens{grid-template-columns:repeat(2,minmax(0,1fr))}.roles{grid-template-columns:minmax(0,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.geo .spin,.geo .bob{animation:none}}
@@ -183,14 +186,14 @@ footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:#8a9
   <section class="panel">
     <h2><em>FEATURES</em>おもな機能</h2>
     <div class="feats">
-      <div><b>LINEでログイン</b><span>初回だけLINE連携。2回目からはパターンや顔認証で開けます。</span></div>
-      <div><b>出欠の回答と集計</b><span>参加・遅れて参加・不参加の3択。人数は自動で集計。</span></div>
-      <div><b>カレンダー</b><span>練習・大会・誕生日・個人予定を色分け表示。</span></div>
-      <div><b>グループ連絡</b><span>オープンとクローズのグループを使い分け。</span></div>
-      <div><b>お知らせ</b><span>練習予定の公開や締め切りを全員に知らせます。</span></div>
-      <div><b>メンバー管理</b><span>学年・学校・誕生日・役割を一覧で管理。</span></div>
-      <div><b>申請・確認</b><span>参加申請などを運営がまとめて確認。</span></div>
-      <div><b>チーム仕様の見た目</b><span>チームカラーとロゴで、自分たちのアプリに。</span></div>
+      <div><figure class="fshot"><img src="feat/f-login.jpg" alt="LINEでログインの画面" loading="lazy" width="390" height="500"></figure><b>LINEでログイン</b><span>初回だけLINE連携。2回目からはパターンや顔認証で開けます。</span></div>
+      <div><figure class="fshot"><img src="feat/f-home.jpg" alt="出欠の回答と集計の画面" loading="lazy" width="390" height="500"></figure><b>出欠の回答と集計</b><span>参加・遅れて参加・不参加の3択。人数は自動で集計。</span></div>
+      <div><figure class="fshot"><img src="feat/f-cal.jpg" alt="カレンダーの画面" loading="lazy" width="390" height="500"></figure><b>カレンダー</b><span>練習・大会・誕生日・個人予定を色分け表示。</span></div>
+      <div><figure class="fshot"><img src="feat/f-msg.jpg" alt="グループ連絡の画面" loading="lazy" width="390" height="500"></figure><b>グループ連絡</b><span>オープンとクローズのグループを使い分け。</span></div>
+      <div><figure class="fshot"><img src="feat/f-news.jpg" alt="お知らせの画面" loading="lazy" width="390" height="500"></figure><b>お知らせ</b><span>練習予定の公開や締め切りを全員に知らせます。</span></div>
+      <div><figure class="fshot"><img src="feat/f-mem.jpg" alt="メンバー管理の画面" loading="lazy" width="390" height="500"></figure><b>メンバー管理</b><span>学年・学校・誕生日・役割を一覧で管理。</span></div>
+      <div><figure class="fshot"><img src="feat/f-apply.jpg" alt="申請・確認の画面" loading="lazy" width="390" height="500"></figure><b>申請・確認</b><span>参加申請などを運営がまとめて確認。</span></div>
+      <div><figure class="fshot"><img src="feat/f-face2.jpg" alt="チーム仕様の見た目の画面" loading="lazy" width="390" height="500"></figure><b>チーム仕様の見た目</b><span>チームカラーとロゴで、自分たちのアプリに。</span></div>
     </div>
   </section>
 
