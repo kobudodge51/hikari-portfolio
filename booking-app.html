@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>サロン向け予約管理システム｜ひかりパートナーズ</title>
+<meta name="description" content="ネット予約から予約・来店管理、顧客リスト、売上の確認まで、ひとつにまとめたサロン向けの予約管理システムです。">
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-title" content="HIKARI">
+<meta name="theme-color" content="#150d10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&display=swap">
+<style>
+
+/* Layout: 乾いたオリーブカーキの地に、幾何学模様を薄く散らす。象牙色のパネルではっきり区切り、詰めた組版で1画面の情報量を増やす */
+:root{
+  --bg1:#3fb8ab; --bg2:#4fc1b5; --bg3:#0e7d70; --tile:#2a2e35;
+  --ivory:#ffffff; --card:#ffffff; --ink:#0d2b29; --ink2:#355754; --muted:#6c8784; --hair:#d4ece8;
+  --on:#ffffff; --on2:#f1fbf9;
+  --khaki:#0f8a7c; --olive:#0b6b60; --brass:#c9a24a; --gold:#d9a090; --rust:#c9a24a; --teal:#0f8a7c; --sky:#f2c9bd;
+  --grad:linear-gradient(110deg,#f2c9bd 0%,#2cb5a3 30%,#0b8a77 52%,#c9a24a 78%,#f3d98b 100%);
+  --grad-soft:linear-gradient(110deg,rgba(129,216,208,.22),rgba(15,138,124,.12),rgba(201,162,74,.16));
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --head:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{background:#150d10}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(900px 520px at 90% -5%,rgba(217,160,144,.24),transparent 60%),radial-gradient(700px 460px at 0% 30%,rgba(163,36,63,.2),transparent 65%),linear-gradient(160deg,#24181b 0%,#150d10 50%,#0a0607 100%) fixed;color:#e9edf1;font-family:var(--body);font-size:14.5px;line-height:1.55;font-feature-settings:"palt";overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,p{margin:0}
+.geo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.geo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(192,199,207,.18) 1.2px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.geo svg{position:absolute;inset:0;width:100%;height:100%}
+.geo .spin{transform-box:fill-box;transform-origin:center;animation:spin 60s linear infinite}
+.geo .bob{animation:bob 9s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes bob{to{transform:translateY(18px)}}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:0;z-index:30;background:rgba(10,11,14,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:linear-gradient(90deg,transparent,#d9a090 30%,#f6d5c8 50%,#c0c7cf 70%,transparent)}
+.hin{display:flex;align-items:center;gap:12px;min-height:50px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo img{height:30px;width:auto;border-radius:6px}
+.logo span{font-family:var(--display);font-weight:900;font-size:1.2rem;letter-spacing:.03em}
+.logo b{color:#d9a090;margin-left:3px}
+.back{margin-left:auto;font-family:var(--head);font-weight:700;font-size:.82rem;text-decoration:none;padding:5px 12px;border-radius:999px;border:1px solid rgba(192,199,207,.5);color:#e9edf1}
+.back:hover{background:rgba(255,255,255,.15)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:center;padding-block:26px 18px}
+.eb{display:inline-block;padding:3px 14px;border-radius:999px;font-family:var(--display);font-weight:900;letter-spacing:.14em;font-size:.95rem;color:#0b0c0e;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6d5c8,#d9a090 55%,#9b5a62)}
+.eb+h1::before{content:"";display:block;width:56px;height:4px;border-radius:4px;background:linear-gradient(100deg,#7a1630,#a3243f 55%,#c8334f);margin-bottom:10px}
+h1{font-family:var(--head);font-weight:900;font-size:clamp(1.8rem,4.2vw,2.9rem);line-height:1.2;margin-top:10px;color:#f4f6f8}
+h1 span{background:linear-gradient(100deg,#fff1ea,#f6d5c8 35%,#d9a090 70%,#b76e79);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{margin-top:10px;font-size:.92rem;color:#c9d0d8}
+.hero-img img{border-radius:16px;box-shadow:0 26px 50px -24px rgba(0,0,0,.9),0 0 0 1px rgba(217,160,144,.35)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 20px;min-height:42px;border-radius:999px;font-family:var(--head);font-weight:900;font-size:.9rem;text-decoration:none;color:#0b0c0e;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55%),linear-gradient(110deg,#f6d5c8,#d9a090 50%,#9b5a62 80%,#f6d5c8);background-size:100% 100%,200% 100%;box-shadow:0 8px 20px -8px rgba(217,160,144,.6);transition:background-position .35s}
+.btn:hover{background-position:100% 0}
+.btn.ghost{background:transparent;color:#e9edf1;border:1.5px solid rgba(192,199,207,.6);box-shadow:none}
+
+.panel{position:relative;background:linear-gradient(180deg,#251a1d,#180f12);border:1px solid rgba(192,199,207,.18);border-radius:18px;padding:18px;margin-bottom:12px;color:#e9edf1;box-shadow:0 20px 44px -26px rgba(0,0,0,.9);overflow:hidden}
+.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#7d3f48,#d9a090 25%,#f6d5c8 50%,#c0c7cf 75%,#7d3f48)}
+h2{font-family:var(--head);font-weight:900;font-size:1.1rem;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;color:#f4f6f8}
+h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spacing:.03em;background:linear-gradient(90deg,#f6d5c8,#d9a090 55%,#c0c7cf);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:.8rem;color:#aeb6bf;margin-top:3px}
+
+.pains{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pains li{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px dashed rgba(192,199,207,.4);font-size:.82rem;line-height:1.45;color:#aeb6bf}
+.pains li b{display:block;color:#f4f6f8;font-family:var(--head);font-weight:900;font-size:.88rem;margin-bottom:2px}
+.arrow{text-align:center;font-family:var(--head);font-weight:900;color:#f2c9bd;margin-top:10px;font-size:.95rem}
+.arrow::before{content:"";display:block;width:0;height:0;margin:0 auto 4px;border:12px solid transparent;border-top:14px solid #d9a090;border-bottom:0}
+
+.screens{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.scr{display:flex;flex-direction:column;gap:6px;min-width:0}
+.phone{border-radius:26px;padding:3px;background:linear-gradient(145deg,#f6d5c8,#d9a090 40%,#7d3f48 75%,#d9a090);box-shadow:0 14px 28px -16px rgba(6,70,64,.7)}
+.phone div{border-radius:23px;overflow:hidden;aspect-ratio:390/700;background:#fff}
+.phone img{width:100%}
+.scr b{font-family:var(--head);font-weight:900;font-size:.95rem;color:#f6d5c8}
+.scr span{font-size:.78rem;color:#aeb6bf;line-height:1.45}
+
+.roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.role{border-radius:14px;padding:12px 14px;border:1px solid rgba(192,199,207,.25);border-top:2px solid #a3243f;background:rgba(255,255,255,.03)}
+.role h3{font-family:var(--head);font-weight:900;font-size:1rem;display:flex;align-items:center;gap:8px;color:#f4f6f8}
+.role h3 i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:.8rem;color:#fff;background:linear-gradient(100deg,#7a1630,#a3243f 55%,#c8334f);color:#fff}
+.role ul{margin:6px 0 0;padding-left:1.1em;font-size:.82rem;color:#aeb6bf;line-height:1.55}
+
+.feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}
+.feats div{padding:8px 10px;border-radius:10px;border:1px solid rgba(192,199,207,.25);border-left:3px solid #a3243f;background:rgba(255,255,255,.03);min-width:0}
+.feats b{display:block;font-family:var(--head);font-weight:900;font-size:.84rem;color:#f4f6f8}
+.feats span{display:block;font-size:.72rem;color:#aeb6bf;line-height:1.4}
+
+.flow{list-style:none;padding:0;margin:10px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;counter-reset:f}
+.flow li{position:relative;padding:10px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(192,199,207,.25);counter-increment:f;font-size:.76rem;color:#aeb6bf;line-height:1.45}
+.flow li::before{content:counter(f,decimal-leading-zero);display:block;font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1;background:linear-gradient(90deg,#f6d5c8,#d9a090);-webkit-background-clip:text;background-clip:text;color:transparent}
+.flow b{display:block;font-family:var(--head);font-weight:900;font-size:.88rem;color:#f4f6f8}
+
+.faq details{border-top:1px solid rgba(192,199,207,.2);padding:9px 2px}
+.faq details:first-of-type{border-top:0}
+.faq summary{cursor:pointer;font-family:var(--head);font-weight:900;font-size:.9rem;list-style:none;display:flex;gap:8px;color:#f4f6f8}
+.faq summary::before{content:"Q";font-family:var(--display);color:#d2405c;font-size:1.1rem;line-height:1.2}
+.faq p{font-size:.82rem;color:#aeb6bf;margin:4px 0 0 18px}
+.end{text-align:center;padding:18px 18px 22px}
+.end p{font-size:.86rem;color:#aeb6bf;margin:6px 0 12px}
+.fshot{margin:-8px -10px 8px;border-radius:9px 9px 0 0;overflow:hidden;aspect-ratio:390/300;background:#000;border-bottom:1px solid rgba(217,160,144,.35)}
+.fshot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.feats div:hover .fshot img{transform:scale(1.06)}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:12px auto 0;max-width:780px}
+.shot{display:flex;flex-direction:column;gap:6px;min-width:0}
+.si{border-radius:18px;overflow:hidden;padding:3px;background:linear-gradient(145deg,#f6d5c8,#d9a090 45%,#7d3f48 80%,#d9a090);box-shadow:0 16px 30px -16px rgba(0,0,0,.8)}
+.si img{border-radius:15px;width:100%;aspect-ratio:3/5;object-fit:cover;object-position:top;background:#f7ede9}
+.shot b{font-family:var(--head);font-weight:900;font-size:.95rem;color:#f6d5c8}
+.shot span{font-size:.78rem;color:#c9bfc1;line-height:1.45}
+@media (max-width:640px){.shots{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.shot span{display:none}}
+footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:#8a929b;padding-block:6px 26px}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.pains,.feats{grid-template-columns:repeat(2,minmax(0,1fr))}.screens{grid-template-columns:repeat(2,minmax(0,1fr))}.roles{grid-template-columns:minmax(0,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.geo .spin,.geo .bob{animation:none}}
+</style>
+</head>
+<body>
+<div class="geo" aria-hidden="true"><svg viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" fill="none">
+  <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#fff1ea"/><stop offset="1" stop-color="#d9a090"/></linearGradient>
+  <pattern id="dia" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v14" stroke="#c0c7cf" stroke-opacity=".35" stroke-width="2"/></pattern></defs>
+  <circle cx="1250" cy="110" r="170" stroke="url(#gg)" stroke-opacity=".8" stroke-width="2.5"/>
+  <circle cx="1250" cy="110" r="112" fill="#ffffff" fill-opacity=".14"/>
+  <circle cx="1250" cy="110" r="230" stroke="#c0c7cf" stroke-opacity=".25" stroke-dasharray="2 9" stroke-width="2"/>
+  <g class="spin"><path d="M1060 380 l78 -135 l78 135 z" stroke="#d9a090" stroke-opacity=".8" stroke-width="2.5"/></g>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" fill="url(#dia)"/>
+  <rect x="60" y="500" width="170" height="170" rx="10" transform="rotate(18 145 585)" stroke="#c0c7cf" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M-40 230 a180 180 0 0 1 360 0 z" fill="#f2c9bd" fill-opacity=".25"/>
+  <path d="M-40 230 a120 120 0 0 1 240 0" stroke="#c0c7cf" stroke-opacity=".5" stroke-width="2"/>
+  <g class="bob"><circle cx="370" cy="130" r="14" fill="url(#gg)"/><circle cx="1340" cy="560" r="10" fill="#ffffff" fill-opacity=".9"/><circle cx="640" cy="890" r="12" fill="#d9a090"/><rect x="930" y="600" width="18" height="18" transform="rotate(45 939 609)" fill="#ffffff" fill-opacity=".8"/></g>
+  <g stroke="#c0c7cf" stroke-opacity=".28" stroke-width="2"><path d="M1170 770 l230 -230"/><path d="M1200 800 l230 -230"/><path d="M1230 830 l230 -230"/><path d="M1260 860 l230 -230"/></g>
+  <path d="M520 40 l44 0 l0 44" stroke="#d9a090" stroke-opacity=".85" stroke-width="2.5"/>
+  <path d="M880 960 q60 -80 120 0 t120 0 t120 0" stroke="#c0c7cf" stroke-opacity=".55" stroke-width="2.5"/>
+  <g class="spin"><path d="M300 860 l20 -35 l40 0 l20 35 l-20 35 l-40 0 z" stroke="#d9a090" stroke-opacity=".8" stroke-width="2"/></g>
+  <g stroke="#c0c7cf" stroke-opacity=".55" stroke-width="2.5"><path d="M760 120 l16 0 M768 112 l0 16"/><path d="M180 380 l14 0 M187 373 l0 14"/><path d="M1380 360 l14 0 M1387 353 l0 14"/></g>
+  <circle cx="820" cy="430" r="240" stroke="#c0c7cf" stroke-opacity=".14" stroke-width="1.5" stroke-dasharray="4 10"/>
+  <path d="M1000 690 l120 0 l-60 -104 z" fill="#2a2e35" fill-opacity=".18"/>
+  <circle cx="460" cy="620" r="70" fill="#d9a090" fill-opacity=".12" stroke="#d9a090" stroke-opacity=".4" stroke-width="1.5"/>
+</svg></div>
+<header><div class="wrap hin">
+  <a class="logo" href="index.html"><img src="logo.png" alt=""><span>HIKARI<b>PARTNERS</b></span></a>
+  <a class="back" href="index.html">← 制作実績へ戻る</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="eb">BOOKING SYSTEM</span>
+      <h1>予約も来店も売上も、<br><span>ひとつの仕組みで。</span></h1>
+      <p class="lead">サロン向けの予約管理システムです。お客様はスマホから24時間いつでも予約でき、お店は予約・来店・顧客・売上をまとめて管理できます。お店の雰囲気やメニューに合わせて、デザインごと仕立てます。</p>
+      <div class="cta"><a class="btn" href="https://yoyakukanri-mihon-page.vercel.app" target="_blank" rel="noopener">見本ページを触る →</a><a class="btn ghost" href="#flow">導入の流れ</a></div>
+    </div>
+    <div class="hero-img"><img src="bk/booking-pick.jpg" alt="予約日時の選択・メニュー・顧客リストの画面" width="990" height="778"></div>
+  </section>
+
+  <section class="panel">
+    <h2><em>PROBLEM</em>こんなことで困っていませんか</h2>
+    <ul class="pains">
+      <li><b>営業中に電話が鳴る</b>施術の手を止めて予約の電話に出ている。</li>
+      <li><b>DMの予約を見落とす</b>InstagramやLINEのやり取りに予約が埋もれる。</li>
+      <li><b>空き状況が伝わらない</b>空いている時間を、毎回個別に案内している。</li>
+      <li><b>顧客や売上がバラバラ</b>紙の台帳や手帳に、来店記録が散らばっている。</li>
+    </ul>
+    <p class="arrow">予約管理システムで、まとめて解決します</p>
+  </section>
+
+  <section class="panel" id="screens">
+    <h2><em>SCREENS</em>実際の画面</h2>
+    <p class="sub">画面の名前・料金はすべてサンプルです。</p>
+    <div class="shots">
+      <div class="shot"><div class="si"><img src="bk/scr-menu.jpg" alt="メニュー選択画面" loading="lazy"></div><b>メニューから予約</b><span>カット・カラーなどのメニューを選ぶと、所要時間と料金がひと目で分かります。</span></div>
+      <div class="shot"><div class="si"><img src="bk/scr-cal.jpg" alt="予約日時の選択画面" loading="lazy"></div><b>日時を選ぶ</b><span>カレンダーで空いている日を選び、予約できる時間だけをボタンで表示します。</span></div>
+      <div class="shot"><div class="si"><img src="bk/scr-cust.jpg" alt="顧客リスト画面" loading="lazy"></div><b>顧客リスト</b><span>名前や電話番号で検索でき、来店の記録をお客様ごとに確認できます。</span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><em>MERIT</em>使う人ごとのメリット</h2>
+    <div class="roles">
+      <div class="role"><h3><i>客</i>お客様</h3><ul><li>24時間いつでもスマホから予約できる</li><li>空いている時間がすぐ分かる</li><li>電話やDMを送る手間がない</li></ul></div>
+      <div class="role"><h3><i>店</i>オーナー・スタッフ</h3><ul><li>施術中に電話で手を止めなくてよい</li><li>予約と来店をPCとスマホで確認できる</li><li>二重予約を防げる</li></ul></div>
+      <div class="role"><h3><i>経</i>お店の経営</h3><ul><li>顧客リストが自然にたまっていく</li><li>日・週・月の売上を確認できる</li><li>リピーターへの案内に生かせる</li></ul></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2><em>FEATURES</em>おもな機能</h2>
+    <div class="feats">
+      <div><b>24時間ネット予約</b><span>営業時間外でも、スマホから予約を受け付けます。</span></div>
+      <div><b>メニュー・料金の設定</b><span>メニューごとに所要時間と料金を設定できます。</span></div>
+      <div><b>空き時間の自動表示</b><span>予約が入った時間は自動で選べなくなります。</span></div>
+      <div><b>予約・来店管理</b><span>日・週・月の表示で、予約と来店を確認できます。</span></div>
+      <div><b>顧客リスト</b><span>お客様の情報と来店の記録をまとめて管理します。</span></div>
+      <div><b>売上の確認</b><span>来客数や売上を、期間ごとに確認できます。</span></div>
+      <div><b>予約の通知</b><span>予約が入ったら、オーナーに知らせます。</span></div>
+      <div><b>お店仕様の見た目</b><span>お店の雰囲気・色・ロゴに合わせて仕立てます。</span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="flow">
+    <h2><em>FLOW</em>導入の流れ</h2>
+    <ol class="flow">
+      <li><b>お話を聞く</b>メニュー、営業時間、困っていることを伺います。</li>
+      <li><b>見た目を決める</b>お店の雰囲気・色・ロゴに合わせて画面を仕立てます。</li>
+      <li><b>見本で試す</b>サンプルのメニューで、予約の流れを確かめます。</li>
+      <li><b>本番の準備</b>メニューと料金を登録し、ホームページにつなぎます。</li>
+      <li><b>使いながら改善</b>使ってみての要望を聞き、手直しを続けます。</li>
+    </ol>
+  </section>
+
+  <section class="panel faq">
+    <h2><em>FAQ</em>よくある質問</h2>
+    <details open><summary>お客様はアプリを入れる必要がありますか？</summary><p>必要ありません。スマホのブラウザで開くだけで予約できます。</p></details>
+    <details><summary>今のホームページに予約ボタンを付けられますか？</summary><p>付けられます。今のホームページやInstagramのプロフィールから、予約ページへ案内できます。</p></details>
+    <details><summary>サロン以外でも使えますか？</summary><p>使えます。接骨院・整体院・教室など、時間で予約を受けるお店に合わせられます。</p></details>
+    <details><summary>メニューや料金はあとから変えられますか？</summary><p>変えられます。季節のメニューや料金の変更にも対応します。</p></details>
+  </section>
+
+  <section class="panel end">
+    <h2 style="justify-content:center"><em>CONTACT</em>まずは見本ページから</h2>
+    <p>実際の予約の流れを、見本ページで触って確かめられます。</p>
+    <div class="cta" style="justify-content:center"><a class="btn" href="https://yoyakukanri-mihon-page.vercel.app" target="_blank" rel="noopener">見本ページを触る →</a><a class="btn ghost" href="index.html">制作実績のトップへ</a></div>
+  </section>
+</main>
+<footer>ひかりパートナーズ　／　岐阜県</footer>
+</body>
+</html>

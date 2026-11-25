@@ -197,6 +197,16 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.4rem;letter-spaci
 @keyframes spin2{to{transform:rotate(360deg)}}
 @media (max-width:480px){.stats button{min-height:88px}.stats b{font-size:2.4rem!important}}
 @media (prefers-reduced-motion:reduce){.stats button,.stats button::before{animation:none}}
+.feat.rose{margin-top:6px;background:radial-gradient(520px 280px at 100% 0%,rgba(217,160,144,.26),transparent 70%),radial-gradient(420px 260px at 0% 100%,rgba(183,110,121,.22),transparent 70%),linear-gradient(150deg,#26191c,#160e11 60%,#0b0708) padding-box,linear-gradient(120deg,#f6d5c8,#d9a090 30%,#7d3f48 50%,#c9b1b4 75%,#fff1ea) border-box}
+.feat.rose::before{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6d5c8,#d9a090 55%,#9b5a62);color:#2a1215}
+.feat.rose .feat-img{background:#f3e6e1}
+.feat.rose .badge{background:linear-gradient(100deg,#9b5a62,#b76e79 55%,#d9a090)}
+.feat.rose .feat-h small,.feat.rose .merits b{color:#f6d5c8}
+.feat.rose .feat-h{text-shadow:0 0 18px rgba(217,160,144,.45),0 2px 0 rgba(0,0,0,.6)}
+.feat.rose .feat-h::after{background:linear-gradient(90deg,#7d3f48,#d9a090 40%,#f6d5c8 60%,#d9a090 80%,transparent);background-size:200% 100%}
+.feat.rose .merits li{border-left-color:#d9a090}
+.feat.rose .mic{filter:hue-rotate(-28deg) saturate(.85) drop-shadow(0 2px 6px rgba(217,160,144,.35))}
+.feat.rose .btn.big{color:#2a1215!important;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55%),linear-gradient(100deg,#f6d5c8,#d9a090 55%,#b76e79)!important;box-shadow:0 8px 20px -8px rgba(217,160,144,.6)!important}
 footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.75rem;color:var(--on2)}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.can{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.tabs{display:none}}
 @media (max-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.stats button{display:block}}
@@ -278,6 +288,22 @@ footer{position:relative;z-index:1;padding-block:4px calc(22px + env(safe-area-i
     <div class="grid" id="grid"></div>
   </section>
 
+  <section class="feat rose" id="pickup2">
+    <div class="feat-img"><img src="bk/booking-pick.jpg" alt="予約日時の選択・メニュー・顧客リストの画面" width="990" height="778"></div>
+    <div class="feat-txt">
+      <span class="badge">こちらもおすすめ</span>
+      <h2 class="feat-h"><small>サロン向け</small>予約管理システム</h2>
+      <p class="feat-lead">ネット予約から予約・来店管理、顧客リスト、売上の確認まで、ひとつの仕組みにまとめました。施術中の電話やDMの見落としをなくし、お店の雰囲気に合わせたデザインで仕立てます。</p>
+      <ul class="merits">
+        <li><img class="mic" src="icons/mt-cal.png" alt="" width="34" height="34"><b>24時間ネット予約</b><span>営業時間外もスマホで予約。</span></li>
+        <li><img class="mic" src="icons/mt-tap.png" alt="" width="34" height="34"><b>予約・来店管理</b><span>日・週・月で予約を確認。</span></li>
+        <li><img class="mic" src="icons/mt-chat.png" alt="" width="34" height="34"><b>顧客リスト管理</b><span>来店記録をお客様ごとに。</span></li>
+        <li><img class="mic" src="icons/mt-home.png" alt="" width="34" height="34"><b>売上の確認</b><span>来客数・売上を期間ごとに。</span></li>
+      </ul>
+      <div class="feat-cta"><a class="btn big" href="booking-app.html">特設ページを見る →</a><a class="note2" href="https://yoyakukanri-mihon-page.vercel.app" target="_blank" rel="noopener" style="text-decoration:underline">見本ページを触る</a></div>
+    </div>
+  </section>
+
   <section class="panel" id="how">
     <h2><em>HOW IT WORKS</em>作り方</h2>
     <div class="steps">
@@ -305,13 +331,16 @@ const W = [
  {"c": "site", "k": "飲食店の紹介ページ", "n": "岐阜駅前の居酒屋", "d": "集客支援の一環で作った、居酒屋の紹介ページ。", "l": []},
  {"c": "site", "k": "商品紹介ページ", "n": "スポーツ向けマッサージオイル", "d": "スポーツで疲れた身体に向けた2種類のオイルを、高級ホテルのような雰囲気で紹介するページ。", "l": []},
  {"c": "site", "k": "競技の入口ページ", "n": "はじめてのドッジボール", "d": "はじめての人に競技の魅力を伝え、近くのチームと大会へ案内するページ。", "l": []},
+ {"c": "app", "k": "予約管理システム", "n": "サロン向け予約管理システム", "d": "24時間ネット予約から、予約・来店管理、顧客リスト、売上の確認までひとつにまとめた予約システム。", "l": [["見本を見る", "https://yoyakukanri-mihon-page.vercel.app"], ["特設ページ", "booking-app.html"]]},
  {"c": "app", "k": "予約管理システム", "n": "接骨院の予約管理システム", "d": "空き枠がひと目で分かる予約画面と、院長がPCとスマホで予約を管理できる画面。", "l": []},
  {"c": "app", "k": "チーム連絡アプリ", "n": "ドッジボールチーム連絡アプリ", "d": "予定、出欠、連絡、送迎をまとめるアプリ。チームカラーとロゴに合わせて、複数のチームに仕立てています。", "l": [], "img": "team-app.png"},
+ {"c": "app", "k": "勤怠管理システム", "n": "運送会社の勤怠管理システム", "d": "ドライバーの拘束時間・運転時間・休憩を記録し、月ごとの勤怠をまとめる運送業向けのシステム。", "l": []},
  {"c": "app", "k": "仮の運営パターン", "n": "解体業 社内連絡アプリ", "d": "現場で使う連絡とスケジュール管理のアプリ。サンプルデータで動く運営パターンの例です。", "l": []},
  {"c": "app", "k": "仮の運営パターン", "n": "サウナ施設の管理システム", "d": "シフト、給与、経費、在庫を管理するシステム。名前と数字はすべて架空の運営パターンの例です。", "l": []},
  {"c": "event", "k": "公式グッズ販売", "n": "HIMARAYA CUP 2026 グッズ販売", "d": "チーム単位の注文、確認メール、入金管理、帳票のPDF出力までできる大会グッズの販売サイト。", "l": [["サイトを見る", "https://himarayacup2026.vercel.app/"]]},
  {"c": "event", "k": "大会速報", "n": "第12回 全日本女子総合選手権 速報", "d": "全国大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/zennihon-joshi12/"]]},
  {"c": "event", "k": "大会速報", "n": "頂上決戦2026 速報", "d": "大会当日の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/choujou2026/"]]},
+ {"c": "event", "k": "大会速報", "n": "第19回 霞渓杯 速報", "d": "県内大会の試合結果を、当日その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://dodge-taikaisokuhou-kakei2026.vercel.app"]]},
  {"c": "event", "k": "大会速報", "n": "ぴょこたんカップ2026 速報", "d": "県内大会の試合結果を、その場でスマホから見られる速報ページ。", "l": [["速報を見る", "https://kobudodge51.github.io/pyoko2026/"]]},
  {"c": "event", "k": "大会速報", "n": "Re:RISE CUP 2026 速報", "d": "U-15部門の大会結果を、当日その場でスマホから見られる速報ページ。実際の大会で運用しました。", "l": [["速報を見る", "https://kobudodge51.github.io/rerise2026/"]]},
  {"c": "event", "k": "大会速報", "n": "第8回 JK杯 速報（バレーボール）", "d": "対戦表、リーグ表、トーナメント表と結果を、参加者がスマホで見られるページ。", "l": [["速報を見る", "https://kobudodge51.github.io/jkcup8/"]]},
