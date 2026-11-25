@@ -117,6 +117,11 @@ h2 em{font-style:normal;font-family:var(--display);font-size:1.5rem;letter-spaci
 .shot b{font-family:var(--head);font-weight:900;font-size:.95rem;color:#f6d5c8}
 .shot span{font-size:.78rem;color:#c9bfc1;line-height:1.45}
 @media (max-width:640px){.shots{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.shot span{display:none}}
+.role .ri{width:40px;height:40px;flex:none}
+.feats .fi{float:left;width:34px;height:34px;margin:1px 8px 0 0}
+.feats div{display:flow-root}
+.flow li{padding-right:48px}
+.flow .wi{position:absolute;right:8px;top:8px;width:36px;height:36px;opacity:.95}
 footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:#8a929b;padding-block:6px 26px}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.pains,.feats{grid-template-columns:repeat(2,minmax(0,1fr))}.screens{grid-template-columns:repeat(2,minmax(0,1fr))}.roles{grid-template-columns:minmax(0,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.geo .spin,.geo .bob{animation:none}}
@@ -184,34 +189,34 @@ footer{position:relative;z-index:1;text-align:center;font-size:.75rem;color:#8a9
   <section class="panel">
     <h2><em>MERIT</em>使う人ごとのメリット</h2>
     <div class="roles">
-      <div class="role"><h3><i>客</i>お客様</h3><ul><li>24時間いつでもスマホから予約できる</li><li>空いている時間がすぐ分かる</li><li>電話やDMを送る手間がない</li></ul></div>
-      <div class="role"><h3><i>店</i>オーナー・スタッフ</h3><ul><li>施術中に電話で手を止めなくてよい</li><li>予約と来店をPCとスマホで確認できる</li><li>二重予約を防げる</li></ul></div>
-      <div class="role"><h3><i>経</i>お店の経営</h3><ul><li>顧客リストが自然にたまっていく</li><li>日・週・月の売上を確認できる</li><li>リピーターへの案内に生かせる</li></ul></div>
+      <div class="role"><h3><img class="ri" src="bk/ic/r-guest.png" alt="" width="40" height="40">お客様</h3><ul><li>24時間いつでもスマホから予約できる</li><li>空いている時間がすぐ分かる</li><li>電話やDMを送る手間がない</li></ul></div>
+      <div class="role"><h3><img class="ri" src="bk/ic/r-owner.png" alt="" width="40" height="40">オーナー・スタッフ</h3><ul><li>施術中に電話で手を止めなくてよい</li><li>予約と来店をPCとスマホで確認できる</li><li>二重予約を防げる</li></ul></div>
+      <div class="role"><h3><img class="ri" src="bk/ic/r-shop.png" alt="" width="40" height="40">お店の経営</h3><ul><li>顧客リストが自然にたまっていく</li><li>日・週・月の売上を確認できる</li><li>リピーターへの案内に生かせる</li></ul></div>
     </div>
   </section>
 
   <section class="panel">
     <h2><em>FEATURES</em>おもな機能</h2>
     <div class="feats">
-      <div><b>24時間ネット予約</b><span>営業時間外でも、スマホから予約を受け付けます。</span></div>
-      <div><b>メニュー・料金の設定</b><span>メニューごとに所要時間と料金を設定できます。</span></div>
-      <div><b>空き時間の自動表示</b><span>予約が入った時間は自動で選べなくなります。</span></div>
-      <div><b>予約・来店管理</b><span>日・週・月の表示で、予約と来店を確認できます。</span></div>
-      <div><b>顧客リスト</b><span>お客様の情報と来店の記録をまとめて管理します。</span></div>
-      <div><b>売上の確認</b><span>来客数や売上を、期間ごとに確認できます。</span></div>
-      <div><b>予約の通知</b><span>予約が入ったら、オーナーに知らせます。</span></div>
-      <div><b>お店仕様の見た目</b><span>お店の雰囲気・色・ロゴに合わせて仕立てます。</span></div>
+      <div><img class="fi" src="bk/ic/f-24h.png" alt="" width="34" height="34"><b>24時間ネット予約</b><span>営業時間外でも、スマホから予約を受け付けます。</span></div>
+      <div><img class="fi" src="bk/ic/f-menu.png" alt="" width="34" height="34"><b>メニュー・料金の設定</b><span>メニューごとに所要時間と料金を設定できます。</span></div>
+      <div><img class="fi" src="bk/ic/f-slot.png" alt="" width="34" height="34"><b>空き時間の自動表示</b><span>予約が入った時間は自動で選べなくなります。</span></div>
+      <div><img class="fi" src="bk/ic/f-manage.png" alt="" width="34" height="34"><b>予約・来店管理</b><span>日・週・月の表示で、予約と来店を確認できます。</span></div>
+      <div><img class="fi" src="bk/ic/f-cust.png" alt="" width="34" height="34"><b>顧客リスト</b><span>お客様の情報と来店の記録をまとめて管理します。</span></div>
+      <div><img class="fi" src="bk/ic/f-sales.png" alt="" width="34" height="34"><b>売上の確認</b><span>来客数や売上を、期間ごとに確認できます。</span></div>
+      <div><img class="fi" src="bk/ic/f-notify.png" alt="" width="34" height="34"><b>予約の通知</b><span>予約が入ったら、オーナーに知らせます。</span></div>
+      <div><img class="fi" src="bk/ic/f-look.png" alt="" width="34" height="34"><b>お店仕様の見た目</b><span>お店の雰囲気・色・ロゴに合わせて仕立てます。</span></div>
     </div>
   </section>
 
   <section class="panel" id="flow">
     <h2><em>FLOW</em>導入の流れ</h2>
     <ol class="flow">
-      <li><b>お話を聞く</b>メニュー、営業時間、困っていることを伺います。</li>
-      <li><b>見た目を決める</b>お店の雰囲気・色・ロゴに合わせて画面を仕立てます。</li>
-      <li><b>見本で試す</b>サンプルのメニューで、予約の流れを確かめます。</li>
-      <li><b>本番の準備</b>メニューと料金を登録し、ホームページにつなぎます。</li>
-      <li><b>使いながら改善</b>使ってみての要望を聞き、手直しを続けます。</li>
+      <li><img class="wi" src="bk/ic/w-1.png" alt="" width="36" height="36"><b>お話を聞く</b>メニュー、営業時間、困っていることを伺います。</li>
+      <li><img class="wi" src="bk/ic/w-2.png" alt="" width="36" height="36"><b>見た目を決める</b>お店の雰囲気・色・ロゴに合わせて画面を仕立てます。</li>
+      <li><img class="wi" src="bk/ic/w-3.png" alt="" width="36" height="36"><b>見本で試す</b>サンプルのメニューで、予約の流れを確かめます。</li>
+      <li><img class="wi" src="bk/ic/w-4.png" alt="" width="36" height="36"><b>本番の準備</b>メニューと料金を登録し、ホームページにつなぎます。</li>
+      <li><img class="wi" src="bk/ic/w-5.png" alt="" width="36" height="36"><b>使いながら改善</b>使ってみての要望を聞き、手直しを続けます。</li>
     </ol>
   </section>
 
